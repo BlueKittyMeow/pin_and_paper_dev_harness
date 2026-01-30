@@ -33,4 +33,20 @@ pin_and_paper_dev_harness/
         path: ../pin_and_paper_sketchpad
       pin_and_paper_canvas:
         path: ../pin_and_paper_canvas
-      # etc.
+       etc.
+
+# Document Flow 
+
+CORE_API.md (main app)
+     │
+     │ extract relevant parts
+     ▼
+INTERFACE_CONTRACTS.md (harness)
+     │
+     │ referenced by
+     ▼
+MODULE_SPECS/*.md (harness)
+     │
+     │ implemented by
+     ▼
+Module code (module repos)
