@@ -52,3 +52,11 @@ MODULE_SPECS/*.md (harness)
      │ implemented by
      ▼
 Module code (module repos)
+
+# Sync
+
+Manual sync (simple, recommended)
+
+CORE_API.md lives in main app
+When it changes significantly, regenerate INTERFACE_CONTRACTS.md in harness
+You're the human who notices "oh, I added a field, need to update contracts"
