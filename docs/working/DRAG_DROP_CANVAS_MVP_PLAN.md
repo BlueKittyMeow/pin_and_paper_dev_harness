@@ -152,3 +152,8 @@ Widget-test gesture arena (outer scale recognizer vs child pan) is the flakiest 
 - **M2 (card renderer) — done.** `pin_and_paper_card_renderer`, same branch, commits `32c9361..ba773c7`: `TaskCardData`/`TagChip` render models, the index-card-styled `TaskCard` widget (`kCardSize` 220×140, `kTaskCardSurfaceKey`), and widget tests. Previewed in the canvas module's own `example/` app (`3e705ec`, "preview real TaskCards in the example app") rather than a harness — the pattern Milestone 4 will repeat in the main app. See `docs/INTERFACE_CONTRACTS.md` Part 2 for the as-built `TaskCard` contract.
 - **M3 (main app persistence, DB v13) — not started.** `pin-and-paper` is still on `databaseVersion = 12`; no `canvas_x`/`canvas_y` migration, no `updateTaskCanvasPosition` on `TaskService` yet.
 - **M4 (main app integration) — not started**, blocked on M3.
+
+## Progress log addendum — 2026-08-03 (late)
+- M3 DONE: `bae5bc7` on pin-and-paper branch, verified 65/65, pushed.
+- M4 BUILT: `f8348e5` committed locally; full-suite verification was in flight at handoff — verify then push. All addendum items 1-11 implemented incl. landing tray + isTaskOverdue extraction.
+- Amethyst desk object + shadow work: see docs/working/HANDOFF-2026-08-03.md.
