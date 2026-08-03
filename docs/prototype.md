@@ -1,103 +1,73 @@
-# Prototype: the bare-bones GUI (walking skeleton)
+# Prototype: path to the bare-bones GUI
 
-**Date:** 2026-08-02 · **Author:** Fable 5
-**Goal:** the earliest possible on-screen proof that Pin and Paper's endgame —
-*your real tasks as cards you drag around a desk* — works. Motivation build,
-not production build. Everything here is a distillation of
-`fable-integration-review.md` (the full wiring plan); read that when a step
-needs depth. Milestones A–D below = wiring-order steps 1–4 there.
+**Date:** 2026-08-02 (rev 2, after review) · **Author:** Fable 5
+**Goal:** earliest on-screen proof of the endgame — *your real tasks as cards
+you drag around a desk* — sequenced for motivation: visible wins early.
 
----
+## Plan of record: the approved POC plan
 
-## 0. Disk space first (blocking, 5 min)
+**`docs/working/DRAG_DROP_CANVAS_MVP_PLAN.md` (approved 2026-07-17, branch
+`claude/drag-drop-canvas-mvp-cu6uoy`) is the plan of record for the POC.**
+Rev 1 of this doc was written without knowledge of it and proposed a heavier
+harness-first route; the approved plan is leaner and reaches the same
+motivation moments sooner:
 
-MysteryOfGlass `/home` has ~1.4 GB free. A Flutter desktop build needs room.
+1. **Canvas module + its own `example/` app** — drag mock cards, validate
+   gestures in isolation. *(Motivation moment #1: the desk exists.)*
+2. **Card renderer MVP slice** — `TaskCardData` + `TagChip` + a simple
+   index-card `TaskCard`. No flip/drawing/textures.
+3. **Main app integration** — DB v13 (`canvas_x`/`canvas_y` on `tasks`,
+   POC-scoped), Spatial View with real tasks, positions survive restart.
+   *(Motivation moment #2: your actual to-do list on the desk.)*
 
-- `pin_and_paper_sketchpad/build/` is **2.2 GB of stale build output** (gitignored,
-  regenerates). `cd ../pin_and_paper_sketchpad && flutter clean` reclaims it →
-  ~3.6 GB free. Do this before anything else.
-- Build **only the harness** for Linux desktop; never run Android builds for
-  prototype work (Gradle caches are multi-GB).
-- After heavy iteration, `flutter clean` in the harness repo is always safe.
+No DevHarnessApp, no sketchpad involvement — the harness becomes relevant
+later, when multiple modules need side-by-side integration testing (see
+"After the POC" below).
 
-## 1. What exists today (so you know how bare "bare bones" is)
+## Deltas & watch-items against the longer-term wiring plan
 
-| Piece | Reality |
-|-------|---------|
-| Dev harness app | Nothing — this repo is docs-only. |
-| Sketchpad | Working prototype (~1k lines, draws, erases). Not needed for the skeleton. |
-| Canvas | Empty `lib/`. |
-| Card renderer | Empty `lib/`. |
-| Journal | Placeholder only. Not in the skeleton. |
-| Main app | Full task DB + sync. Source of real tasks in Milestone D. |
+The full integration review (`fable-integration-review.md`, 2026-07-09)
+remains the map for everything *after* the POC. Two seams to keep eyes on:
 
-## 2. Milestone A — the harness runs (one sitting)
+- **Spatial columns vs. `task_canvas` table.** The POC puts `canvas_x/y` on
+  the `tasks` row; the integration review (§3) recommends a separate
+  `task_canvas` table once positions sync (LWW contention, write volume, MCP
+  isolation). The POC plan verifiably excludes the columns from sync mappers,
+  which defuses most of that for now — but note its `updateTaskCanvasPosition`
+  still bumps `updated_at` and writes `sync_log` on drag-end, so task-row LWW
+  contention between a drag and a remote edit is possible even pre-sync.
+  Accepted for the POC; revisit at the "sync positions" follow-up — that is
+  the natural moment to decide columns-forever vs. migrate-to-table.
+- **Datasource contract.** `SpatialDataSource` is an abstract
+  `ChangeNotifier` (per the approved plan and `pin_and_paper_canvas/docs/
+  fable-review.md` §3.1). Do **not** copy the harness skeletons in
+  `ARCHITECTURE_AND_HARNESS.md` Part 3 verbatim — they predate this contract
+  fix (plain interface, manual callbacks, elided methods) and are shape
+  reference only.
 
-Scaffold this repo into a Flutter app: `pubspec.yaml` with path deps on the four
-modules (exact block in `fable-integration-review.md` §2), `lib/main.dart` with
-a 4-tab shell, one page per module, "not built yet" placeholders. Skeleton code
-is fully sketched in `ARCHITECTURE_AND_HARNESS.md` Part 3 — copy, don't
-re-derive. Canvas and card_renderer must each get a first-commit stub barrel
-file (`lib/pin_and_paper_canvas.dart` etc., public classes throwing
-`UnimplementedError`) or the harness won't compile.
+## After the POC (the deferred roadmap)
 
-**Checkpoint:** `flutter run -d linux` → 4 tabs, sketchpad tab draws.
-This is also the moment the repo's README/CLAUDE.md stop lying (see
-integration review §7 hygiene list — do the 30-min cleanup here).
+In rough order, all specced already:
 
-## 3. Milestone B — dumb rectangles on a desk (the real canvas MVP)
+1. **Harness app** (`fable-integration-review.md` §2) — becomes worth building
+   when sketchpad/journal integration starts; checkpoint: tabs render, canvas
+   at 60fps with 100 mock entities (the canvas review's §5 gate — the POC's
+   example app should hit this too before integration).
+2. **Sync spatial positions** (§3 checklist) + the columns-vs-table decision.
+3. **Canvas polish** — rotation, z-order.
+4. **Sketchpad serialization → card drawings**, local-only (§4; format specced
+   in `pin_and_paper_sketchpad/docs/fable-review.md`).
+5. **Phase 5 realism** — "bake, don't simulate"
+   (`pin_and_paper_card_renderer/docs/fable-review.md`).
+6. **Journal.**
 
-Canvas module, against **mock data only** (`MockSpatialDataSource`, ~20 fake
-entities). Scope per `pin_and_paper_canvas/docs/fable-review.md` (pre-build
-decisions are already made there: Stack + Transform rendering, custom viewport
-— *not* InteractiveViewer — gesture arbitration, coordinate rules):
+## Housekeeping notes (2026-08-02)
 
-- pan/zoom the surface, drag colored rectangles, tap to select
-- `onEntityMoved` fires **once per gesture end** (contract fix §5.2 — never per frame)
-- nothing persists yet; mock holds positions in memory
-
-**Checkpoint:** drag rectangles smoothly in the harness canvas tab.
-**This is the motivation moment #1** — the desk exists.
-
-## 4. Milestone C — rectangles become cards (first integration)
-
-Card renderer static MVP: a `TaskCard` widget that takes `TaskCardData` (title,
-done, tags) and looks like a paper card — flat color, rounded corner, one
-shadow. **No realism yet**: no textures, no torn edges, no lighting (that's
-Phase 5; see the card_renderer review's "bake, don't simulate" guide and its
-do-NOT table). Add a card-gallery tab, then swap the canvas mock's
-`entityBuilder` from rectangles to `TaskCard`.
-
-**Checkpoint:** dragging *cards* around the desk, zero main-app involvement.
-
-## 5. Milestone D — your real tasks on the desk
-
-First (and only) main-app work in the skeleton:
-
-1. `task_canvas` table, local migration v13 — SQL sketched in integration
-   review §3. **No Supabase, no sync** for the prototype (that's step 5 of the
-   full plan, explicitly deferred).
-2. `TaskSpatialDataSource` implementing the canvas contract over
-   `TaskProvider._tasks` + a `task_canvas` cache. Tasks without a row get a
-   deterministic staggered-grid default position; write a row on first drag
-   (contract fix §5.3).
-3. A Spatial view behind a debug flag/toggle in the main app — or, cheaper,
-   point the harness at a **copy** of the real DB file first if wiring the
-   main-app toggle balloons.
-
-**Checkpoint:** your actual to-do list as draggable cards; positions survive
-restart. **Motivation moment #2 — the end goal, demonstrated.**
-
-## 6. What the skeleton deliberately skips
-
-Sync of spatial data (LWW design is ready when wanted) · drawings/sketchpad
-serialization (blocks journal, not the desk) · realism (parameters later, not
-systems) · rotation & z-order polish · journal. Each has its slot in the
-9-step order; none blocks the demo.
-
-## 7. Who can build what
-
-Milestones A–C are pure module work — any model can do them from the specs +
-`fable-review.md` docs in each repo, no main-app knowledge needed. Milestone D
-needs main-app context (`CORE_API.md` + sync review findings). Keep those as
-separate sessions/agents; the module boundaries are the architecture working.
+- Disk: stale build artifacts (~13 GB: sketchpad `build/`, three Rust
+  `target/` dirs, localsend) were cleared on 2026-08-02; `/home` has ~15 GB
+  free. Android builds remain the space hog to avoid for prototype work;
+  root `/` is at 95% (~2.2 GB) — keep heavy work under `/home`.
+- Main-app data access in step 3 goes through the public `TaskProvider.tasks`
+  getter (the `_tasks` field is private).
+- Repos touched by the POC: canvas, card_renderer, main app — per the
+  approved plan, work on branch `claude/drag-drop-canvas-mvp-cu6uoy` in each.
