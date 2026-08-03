@@ -5,7 +5,7 @@
 The card renderer creates the visual appearance of task cards — torn paper edges, paper textures, shadows, flip animations, and drawing integration. It transforms simple data into tactile, delightful widgets.
 
 **Module:** `pin_and_paper_card_renderer`
-**Phase:** 4.2, 4.5, 5.x
+**Phase:** S4.2, S4.5 (spatial), 5.x
 **Dependencies:** `pin_and_paper_sketchpad` (for drawing on cards)
 **Consumed by:** Main app (via canvas `entityBuilder`)
 
@@ -68,7 +68,7 @@ Square, solid color, slight curl at corner.
 
 ## Subphases
 
-### Phase 4.2: Static Card Rendering (Week 2)
+### Phase S4.2: Static Card Rendering (Week 2)
 
 **Goal:** Beautiful cards with no interaction
 
@@ -84,7 +84,7 @@ Square, solid color, slight curl at corner.
 
 **Deliverable:** Cards look beautiful in harness, shown at various states
 
-### Phase 4.5: Flip + Drawing (Week 5)
+### Phase S4.5: Flip + Drawing (Week 5)
 
 **Goal:** Cards are interactive objects
 
@@ -163,7 +163,7 @@ Path generateTornEdge(double length, {required int seed}) {
 
 ### Shadow Rendering
 
-Phase 4.2 (static):
+Phase S4.2 (static):
 ```dart
 BoxDecoration(
   boxShadow: [

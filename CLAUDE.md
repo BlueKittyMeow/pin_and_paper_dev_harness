@@ -20,15 +20,24 @@ pin_and_paper (main app)
 
 ## 📋 Spec Locations
 
+The `specs/phase-*` paths below used to appear here but exist in no repo.
+The real specs are all under `docs/module_specs/` in this repo:
+
 | Phase | Spec File | Status |
 |-------|-----------|--------|
-| 4.1 Canvas MVP | `specs/phase-4.1-canvas-mvp/canvas-mvp-spec.md` | Ready |
-| 4.2 Card Renderer | `specs/phase-4.2-card-renderer-mvp/card-renderer-spec.md` | Ready |
-| 4.3 Integration | `specs/phase-4.3-integration/integration-spec.md` | Ready |
-| 5 Polish | `specs/phase-5-spatial-polish/spatial-polish-spec.md` | Ready |
-| 6 Journal | `specs/phase-6-journal/journal-spec.md` | Ready |
+| S4.1 Canvas MVP | `docs/module_specs/CANVAS_SPEC.md` | Ready |
+| S4.2 Card Renderer | `docs/module_specs/CARD_RENDERER_SPEC.md` | Ready |
+| — Sketchpad | `docs/module_specs/SKETCHPAD_SPEC.md` | Prototype working |
+| 6 Journal | `docs/module_specs/JOURNAL_SPEC.md` | Placeholder screen only |
 
 **Always read the relevant spec before implementing features.**
+
+**Plan of record vs. roadmap:**
+- `docs/working/DRAG_DROP_CANVAS_MVP_PLAN.md` is the **approved POC plan**
+  currently being executed (branch `claude/drag-drop-canvas-mvp-cu6uoy`) —
+  read this before touching canvas, card_renderer, or main-app spatial code.
+- `docs/prototype.md` is the roadmap: what the POC covers, what's deferred
+  until after it (harness app, sync, polish, journal).
 
 ## 🔧 Module Paths (Local Development)
 

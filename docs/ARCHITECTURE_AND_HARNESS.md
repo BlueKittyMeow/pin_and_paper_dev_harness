@@ -168,7 +168,7 @@ typedef SpatialEntityBuilder = Widget Function(
 
 **Consumed by:** Main app (Spatial View)
 
-**Status:** Not started (Phase 4.1)
+**Status:** Not started (Phase S4.1)
 
 ---
 
@@ -244,7 +244,7 @@ class CardFlipController {
 
 **Consumed by:** Main app (Spatial View)
 
-**Status:** Not started (Phase 4.2)
+**Status:** Not started (Phase S4.2)
 
 ---
 
@@ -878,11 +878,11 @@ When integrating a module into the main app:
 
 | Phase | Module(s) | Deliverable |
 |-------|-----------|-------------|
-| 4.1 | canvas | Pan/zoom/drag with rectangles in harness |
-| 4.2 | card_renderer | Beautiful cards (static) in harness |
-| 4.3 | canvas | Rotation + selection in harness |
-| 4.4 | main app | Integration, persistence, view toggle |
-| 4.5 | card_renderer + sketchpad | Drawing on cards, flip animation |
+| S4.1 | canvas | Pan/zoom/drag with rectangles in harness |
+| S4.2 | card_renderer | Beautiful cards (static) in harness |
+| S4.3 | canvas | Rotation + selection in harness |
+| S4.4 | main app | Integration, persistence, view toggle |
+| S4.5 | card_renderer + sketchpad | Drawing on cards, flip animation |
 | 5.x | card_renderer | Dynamic lighting, conspiracy strings |
 | 6.1 | journal | Pull-up sheet, basic layout in harness |
 | 6.2 | journal | Page flip animation |

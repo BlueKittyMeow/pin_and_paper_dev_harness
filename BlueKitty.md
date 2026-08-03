@@ -76,7 +76,7 @@ lib/               ← The big codebase
 
 ### Example prompt for canvas work:
 
-> "Here's the canvas module spec and interface contracts. Let's implement Phase 4.1 — pan, zoom, and drag with placeholder rectangles."
+> "Here's the canvas module spec and interface contracts. Let's implement Phase S4.1 — pan, zoom, and drag with placeholder rectangles."
 > 
 > [attach: CANVAS_SPEC.md]
 > [attach: INTERFACE_CONTRACTS.md]
@@ -126,13 +126,16 @@ lib/               ← The big codebase
 | Phase | Module | What You're Building |
 |-------|--------|---------------------|
 | **Current** | sketchpad | Pressure drawing, eraser |
-| 4.1 | canvas | Pan, zoom, drag rectangles |
-| 4.2 | card_renderer | Beautiful static cards |
-| 4.3 | canvas | Rotation, selection |
-| 4.4 | main app | Wire it all together |
-| 4.5 | card_renderer | Drawing on cards, flip |
+| S4.1 | canvas | Pan, zoom, drag rectangles |
+| S4.2 | card_renderer | Beautiful static cards |
+| S4.3 | canvas | Rotation, selection |
+| S4.4 | main app | Wire it all together |
+| S4.5 | card_renderer | Drawing on cards, flip |
 | 5.x | card_renderer | Dynamic lighting |
 | 6.x | journal | Daybook feature |
+
+*("S4" = this repo's spatial-canvas phase numbering — kept distinct from the
+main app's Phase 4.0, which is Supabase sync. See `CLAUDE.md`.)*
 
 ---
 
@@ -142,7 +145,7 @@ lib/               ← The big codebase
 |--------------|------------|
 | Understand the whole system | `ARCHITECTURE_AND_HARNESS.md` |
 | Know how modules talk to each other | `INTERFACE_CONTRACTS.md` |
-| See the MVP plan for Phase 4 | `PHASE_4_MVP_ROADMAP.md` |
+| See the MVP plan for Phase S4 (spatial) | `PHASE_4_MVP_ROADMAP.md` |
 | Build/modify the sketchpad | `module_specs/SKETCHPAD_SPEC.md` |
 | Build/modify the canvas | `module_specs/CANVAS_SPEC.md` |
 | Build/modify the card renderer | `module_specs/CARD_RENDERER_SPEC.md` |
@@ -182,10 +185,10 @@ Simplified templates for module work live in `docs/templates/`:
 ### Quick Start a Phase
 ```bash
 # 1. Create working dir
-mkdir -p docs/working/canvas-4.1/
+mkdir -p docs/working/canvas-S4.1/
 
 # 2. Copy findings template if needed
-cp docs/templates/module-findings-template.md docs/working/canvas-4.1/codex-findings.md
+cp docs/templates/module-findings-template.md docs/working/canvas-S4.1/codex-findings.md
 
 # 3. Review spec
 cat docs/module_specs/CANVAS_SPEC.md
@@ -198,9 +201,9 @@ cd ../pin_and_paper_canvas
 ```bash
 # 1. Update spec checkboxes
 # 2. Archive working dir
-mv docs/working/canvas-4.1/ docs/archive/
+mv docs/working/canvas-S4.1/ docs/archive/
 # 3. Commit
-git add -A && git commit -m "Complete canvas Phase 4.1"
+git add -A && git commit -m "Complete canvas Phase S4.1"
 ```
 
 ---

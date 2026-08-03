@@ -5,7 +5,7 @@
 The spatial canvas provides the foundation for Pin and Paper's "flatlay desk" view — a bounded, pannable, zoomable surface where task cards can be freely positioned and rotated.
 
 **Module:** `pin_and_paper_canvas`
-**Phase:** 4.1, 4.3
+**Phase:** S4.1, S4.3 (spatial)
 **Dependencies:** None (foundation module)
 **Consumed by:** Main app (Spatial View)
 
@@ -54,7 +54,7 @@ The canvas should feel like a physical desk surface:
 
 ## Subphases
 
-### Phase 4.1: Canvas Foundation (Week 1)
+### Phase S4.1: Canvas Foundation (Week 1)
 
 **Goal:** Pan, zoom, and drag working with placeholder rectangles
 
@@ -71,7 +71,7 @@ The canvas should feel like a physical desk surface:
 
 **Deliverable:** Demo in harness with colored rectangles you can drag around a bounded canvas
 
-### Phase 4.3: Rotation + Selection Polish (Week 3)
+### Phase S4.3: Rotation + Selection Polish (Week 3)
 
 **Goal:** Two-finger rotation, z-ordering, selection UX
 
@@ -224,8 +224,8 @@ Selection indicator options:
 - [ ] Entities render at correct positions
 - [ ] Drag moves entity
 - [ ] Entity stops at canvas bounds
-- [ ] Rotation works (Phase 4.3)
-- [ ] Z-order updates on tap (Phase 4.3)
+- [ ] Rotation works (Phase S4.3)
+- [ ] Z-order updates on tap (Phase S4.3)
 
 ### Selection
 - [ ] Tap selects entity

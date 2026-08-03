@@ -45,7 +45,7 @@ flutter run   # manual smoke test
 
 **Example:**
 ```markdown
-### Phase 4.1: Canvas Foundation
+### Phase S4.1: Canvas Foundation
 
 - [x] Basic widget structure
 - [x] Viewport transform (pan/zoom matrix)
@@ -159,8 +159,8 @@ Add deferred items to the spec's "Future Considerations" or create a note:
 ```markdown
 ## Future Considerations
 
-- [ ] Grid snapping (deferred from 4.1)
-- [ ] Multi-select (deferred from 4.3)
+- [ ] Grid snapping (deferred from S4.1)
+- [ ] Multi-select (deferred from S4.3)
 ```
 
 **Or in archive:**
@@ -174,7 +174,7 @@ When a module is complete enough to integrate:
 
 1. **This is a main app task, not a module task**
 2. Use main app's `phase-start-checklist.md`
-3. Integration gets its own phase (e.g., "Phase 4.4: Canvas Integration")
+3. Integration gets its own phase (e.g., "Phase S4.4: Canvas Integration")
 4. Full agent review of integration code
 
 The module subphases are done; integration is a new chapter.

@@ -1,4 +1,4 @@
-# Phase 4 MVP Roadmap
+# Phase S4 MVP Roadmap (spatial)
 
 **Goal:** Validate the spatial architecture with a working vertical slice.
 
@@ -42,7 +42,7 @@ Build "good enough" versions of each piece, then wire them together early. Polis
 
 ---
 
-## Phase 4.1-MVP: Canvas Foundation
+## Phase S4.1-MVP: Canvas Foundation
 
 **Duration:** 1-2 weeks
 **Goal:** Pan, zoom, and drag rectangles on a bounded canvas
@@ -115,7 +115,7 @@ final mockEntities = [
 
 ---
 
-## Phase 4.2-MVP: Card Renderer Foundation
+## Phase S4.2-MVP: Card Renderer Foundation
 
 **Duration:** 1-2 weeks
 **Goal:** A static card widget that looks like an index card
@@ -201,7 +201,7 @@ final mockCard = TaskCardData(
 
 ---
 
-## Phase 4.4-MVP: Integration
+## Phase S4.4-MVP: Integration
 
 **Duration:** 1 week
 **Goal:** Wire canvas + card_renderer together with real tasks
@@ -265,14 +265,14 @@ In the main app:
 
 Once the vertical slice works, go back and add features:
 
-### Canvas Polish (4.3+)
+### Canvas Polish (S4.3+)
 - Two-finger rotation
 - Selection state + glow
 - Z-ordering (tap brings to front)
 - Double-tap to open detail
 - Grid snapping (optional)
 
-### Card Renderer Polish (4.5+)
+### Card Renderer Polish (S4.5+)
 - Torn paper edges
 - Flip animation
 - Card back design
@@ -297,30 +297,30 @@ Once the vertical slice works, go back and add features:
 
 ## Working With AI Teams
 
-### For Canvas 4.1-MVP
+### For Canvas S4.1-MVP
 
 **Give the AI:**
-1. This section of this doc (Phase 4.1-MVP)
+1. This section of this doc (Phase S4.1-MVP)
 2. The `SpatialEntity` and `SpatialDataSource` interfaces from INTERFACE_CONTRACTS.md
 3. Current canvas repo code (empty/stub)
 
 **Prompt:**
-> "We're building Canvas 4.1-MVP: pan, zoom, and drag. Here's the scope and interfaces. Let's start with the basic SpatialCanvas widget structure."
+> "We're building Canvas S4.1-MVP: pan, zoom, and drag. Here's the scope and interfaces. Let's start with the basic SpatialCanvas widget structure."
 
-### For Card Renderer 4.2-MVP
+### For Card Renderer S4.2-MVP
 
 **Give the AI:**
-1. This section of this doc (Phase 4.2-MVP)
+1. This section of this doc (Phase S4.2-MVP)
 2. The `TaskCardData` and `TagChip` types from INTERFACE_CONTRACTS.md
 3. Current card_renderer repo code (empty/stub)
 
 **Prompt:**
-> "We're building Card Renderer 4.2-MVP: a static index card display. Here's the scope and data types. Let's start with the TaskCard widget."
+> "We're building Card Renderer S4.2-MVP: a static index card display. Here's the scope and data types. Let's start with the TaskCard widget."
 
-### For Integration 4.4-MVP
+### For Integration S4.4-MVP
 
 **Give the AI:**
-1. This section of this doc (Phase 4.4-MVP)
+1. This section of this doc (Phase S4.4-MVP)
 2. Both interfaces (SpatialDataSource + TaskCardData)
 3. The main app's Task model (from CORE_API.md)
 
@@ -365,7 +365,7 @@ Check Claude Code docs for exact syntax — this would let AI read specs from ha
 
 ## Success Checklist
 
-At end of Phase 4 MVP:
+At end of Phase S4 MVP:
 
 - [ ] Can open spatial view in main app
 - [ ] See real tasks as cards

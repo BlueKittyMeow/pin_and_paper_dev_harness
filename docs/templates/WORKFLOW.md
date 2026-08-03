@@ -86,7 +86,7 @@ pin_and_paper_[module]/             ← Code only
 - Major features (e.g., "implement eraser system")
 - Anything touching multiple files
 - Features that need agent review
-- Phase milestones (4.1, 4.2, etc.)
+- Phase milestones (S4.1, S4.2, etc.)
 
 ### Light Process (just commit and go)
 - Bug fixes
@@ -173,7 +173,7 @@ pin_and_paper_dev_harness/
 
 ### Example:
 ```markdown
-## Phase 4.1: Canvas Foundation
+## Phase S4.1: Canvas Foundation
 
 - [x] Basic widget structure
 - [x] Viewport transform (pan/zoom matrix)

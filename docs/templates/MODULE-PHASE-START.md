@@ -7,7 +7,7 @@
 
 ## Trigger
 
-"Let's start [module] Phase X.Y" (e.g., "Let's start canvas Phase 4.1")
+"Let's start [module] Phase X.Y" (e.g., "Let's start canvas Phase S4.1")
 
 ---
 
@@ -16,7 +16,7 @@
 ### 1. Identify Module and Phase
 
 **Module:** _________________ (sketchpad / canvas / card_renderer / journal)
-**Phase:** _________________ (e.g., 4.1, 4.2)
+**Phase:** _________________ (e.g., S4.1, S4.2)
 **Spec location:** `docs/module_specs/[MODULE]_SPEC.md`
 
 ---
@@ -41,7 +41,7 @@
 
 ```bash
 mkdir -p docs/working/[module]-[phase]/
-# Example: docs/working/canvas-4.1/
+# Example: docs/working/canvas-S4.1/
 ```
 
 **Confirm:** "Created docs/working/[module]-[phase]/"

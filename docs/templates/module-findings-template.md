@@ -4,7 +4,7 @@
 Copy this file, don't edit directly:
 ```bash
 cp docs/templates/module-findings-template.md docs/working/[module]-[phase]/[agent]-findings.md
-# Example: docs/working/canvas-4.1/codex-findings.md
+# Example: docs/working/canvas-S4.1/codex-findings.md
 ```
 
 ---

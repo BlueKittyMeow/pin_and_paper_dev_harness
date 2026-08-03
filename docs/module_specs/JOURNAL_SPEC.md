@@ -340,7 +340,7 @@ Reuse paper textures and shadow rendering.
 | Dependency | Status | Blocker? |
 |------------|--------|----------|
 | Sketchpad module | In progress | Yes — need drawing for 6.3 |
-| Card renderer (textures) | Phase 4.2 | No — can use solid colors initially |
+| Card renderer (textures) | Phase S4.2 | No — can use solid colors initially |
 | Completed task timestamps | Exists ✓ | No |
 | SQLite migrations | Exists ✓ | No |
 

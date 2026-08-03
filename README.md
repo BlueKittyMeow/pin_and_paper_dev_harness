@@ -1,61 +1,31 @@
 # pin_and_paper_dev_harness
-Dev harness and orchestrator for Pin and Paper modules
 
-# Workflow
+This repo is the **specs/docs home** for the Pin and Paper module family
+(`pin_and_paper_canvas`, `pin_and_paper_card_renderer`, `pin_and_paper_sketchpad`,
+`pin_and_paper_journal`) — architecture decisions, interface contracts, and
+per-module specs live here.
 
-# Structure
+The harness *app* itself (a 4-tab Flutter shell for exercising modules
+against mocks) is **not yet built**. It's deferred until multi-module
+integration testing is actually needed — see "After the POC" in
+`docs/prototype.md`.
 
-pin_and_paper_dev_harness/
-├── lib/
-│   ├── main.dart                    # Harness app
-│   ├── mocks/
-│   │   ├── mock_spatial_source.dart
-│   │   ├── mock_journal_source.dart
-│   │   └── mock_data.dart
-│   └── pages/
-│       ├── sketchpad_page.dart
-│       ├── canvas_page.dart
-│       ├── card_page.dart
-│       └── journal_page.dart
-│
-├── docs/
-│   ├── ARCHITECTURE_AND_HARNESS.md  # Overall architecture
-│   ├── INTERFACE_CONTRACTS.md       # What modules need to know (extracted)
-│   │
-│   └── module_specs/
-│       ├── SKETCHPAD_SPEC.md        # Drawing layer spec
-│       ├── SKETCHPAD_SHAPES.md      # Shape correction spec  
-│       ├── CANVAS_SPEC.md           # To be written
-│       ├── CARD_RENDERER_SPEC.md    # To be written
-│       └── JOURNAL_SPEC.md          # Already written
-│
-└── pubspec.yaml
-    dependencies:
-      pin_and_paper_sketchpad:
-        path: ../pin_and_paper_sketchpad
-      pin_and_paper_canvas:
-        path: ../pin_and_paper_canvas
-       etc.
+## Current focus
 
-# Document Flow 
+The active effort is the drag-and-drop spatial canvas POC, tracked in
+[`docs/working/DRAG_DROP_CANVAS_MVP_PLAN.md`](docs/working/DRAG_DROP_CANVAS_MVP_PLAN.md)
+(the approved plan of record). It builds the canvas module + a card renderer
+slice + main-app persistence directly — no harness app required.
 
-CORE_API.md (main app)
-     │
-     │ extract relevant parts
-     ▼
-INTERFACE_CONTRACTS.md (harness)
-     │
-     │ referenced by
-     ▼
-MODULE_SPECS/*.md (harness)
-     │
-     │ implemented by
-     ▼
-Module code (module repos)
+## Key docs
 
-# Sync
-
-Manual sync (simple, recommended)
-
-CORE_API.md lives in main app
-When it changes significantly, regenerate INTERFACE_CONTRACTS.md in harness
+- [`docs/prototype.md`](docs/prototype.md) — current plan-of-record framing:
+  the POC path and what's deferred until after it.
+- [`docs/fable-integration-review.md`](docs/fable-integration-review.md) —
+  the longer-term wiring plan (spatial data storage, drawing persistence,
+  interface contract fixes) for everything after the POC.
+- [`docs/module_specs/`](docs/module_specs/) — per-module specs (canvas,
+  card renderer, sketchpad, journal).
+- [`docs/INTERFACE_CONTRACTS.md`](docs/INTERFACE_CONTRACTS.md) — the
+  cross-module interfaces (`SpatialEntity`, `SpatialDataSource`,
+  `TaskCardData`, etc.) extracted from the main app's `CORE_API.md`.
