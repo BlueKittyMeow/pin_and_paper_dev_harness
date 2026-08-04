@@ -39,9 +39,25 @@ prototype rather than argue: (a) truly flat cards, objects carry all
 depth; (b) a tiny FIXED global perspective term on the viewport
 transform (uniform for everything — Flutter Matrix4 supports it; hit
 testing inverts the matrix, needs verification); (c) cosmetic-only skew
-(shadows/edges suggest perspective, text stays screen-aligned). Plan: a
-cheap throwaway A/B on device once the drawing wave lands, owner picks
-by eye.
+(shadows/edges suggest perspective, text stays screen-aligned). Plan
+APPROVED by owner 2026-08-04: cheap throwaway A/B on device once the
+drawing wave lands, owner picks by eye.
+**HARD CONSTRAINT (owner):** any perspective applies to the desk plane
+and its contents ONLY — screen-space UI chrome (menu tabs, panels,
+anything sitting over the table) stays perfectly flat. World plane vs
+chrome plane, strictly separated. Codex research on how other apps
+handle this split → PERSPECTIVE_UI_RESEARCH.md when filed.
+
+## Blender pilot notes (owner round, 2026-08-04)
+- **License concern dissolved:** blend-ai's AGPL is irrelevant — it's a
+  build-time asset tool, never part of the shipped app (owner call,
+  correct reading). Toolchain choice is now purely "best for loop-based
+  work": blender-ai-mcp primary, blend-ai as A/B candidate, ahujasid
+  blender-mcp fallback (Claude's pick, owner delegated).
+- **Pilot asset 1: notebook — WITH A RIBBON BOOKMARK (owner request).**
+  Design note: the ribbon is genuinely useful, not just charming — a
+  thin draped curve is a gentle first test of the organic/drape
+  geometry the dachshund's long coat will demand at full strength.
 
 ## Open design question: 2.5D vs 3D, and the desk's camera
 
