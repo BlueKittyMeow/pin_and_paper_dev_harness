@@ -74,6 +74,16 @@
   missing-size rejection; palm rejection + pointer-ID + onPointerCancel
   tests present; DrawingPreview records the Picture once per content
   change, honors visibility/opacity/eraser, scales capture→target.
+- **M-D2.5 DONE** (sketchpad `5d89d6e..9317ad2`, 5 commits, pushed;
+  32→57 tests, analyze+test exit 0): preview picture lifecycle out of
+  build(); DrawingCanvas auto-stamps LayerStack.size from layout;
+  fromJson FormatExceptions; colorToHex — agy's negative-radix claim
+  PROVEN FALSE by test (Java-ism; mask applied anyway); 0.75px min
+  painted stroke width floor; cross-layer chronological undo/redo
+  (clearActiveLayer = undoable batch; undoOnActiveLayer REMOVED from
+  API — M-D5 must use undo()/redo(); toolbar gained redo); live editor
+  bake-and-composite (per-layer Pictures keyed on revision, only the
+  wet stroke tessellates per frame, shared paint path with preview).
 - **M-D3 DONE** (card_renderer `68365ea` + `17e5ea9` + `6f0ddda`,
   pushed): overlay slots on BOTH faces (`TaskCard.faceOverlay`,
   `TaskCardBack.faceOverlay`, `FlippableTaskCard.frontOverlay/
