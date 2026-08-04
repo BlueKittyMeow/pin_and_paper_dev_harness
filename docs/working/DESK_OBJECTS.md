@@ -36,3 +36,16 @@ coherence questions (feet-down-z vs tilt); Flutter 3D feasibility;
 asset pipeline options (incl. photo-derived); rotation UX.
 
 Decision deferred until research lands + owner reads it.
+
+## Asset-creation option: agent-driven Blender (owner note 2026-08-04)
+
+Blender MCP integrations exist for both Claude and codex; the owner has
+seen strong results from pure agent loops (model → screenshot → adjust),
+including fully articulated/rigged mechanisms. Potential pipeline for
+tchotchkes: agent models the object in Blender from reference photos →
+decimate/simplify the mesh → either export for real-3D rendering or
+prerender to per-yaw sprite sets (whichever the 3D research recommends).
+This sidesteps photogrammetry's glass problem for the amber toad —
+model it by eye from photos instead of scanning it. Evaluate alongside
+the codex 3D research when it lands; if adopted, the Blender MCP setup
+gets its own session (install, connect, test loop on a simple object).
