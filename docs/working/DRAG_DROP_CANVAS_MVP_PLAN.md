@@ -157,3 +157,13 @@ Widget-test gesture arena (outer scale recognizer vs child pan) is the flakiest 
 - M3 DONE: `bae5bc7` on pin-and-paper branch, verified 65/65, pushed.
 - M4 BUILT: `f8348e5` committed locally; full-suite verification was in flight at handoff — verify then push. All addendum items 1-11 implemented incl. landing tray + isTaskOverdue extraction.
 - Amethyst desk object + shadow work: see docs/working/HANDOFF-2026-08-03.md.
+
+## Progress log addendum — 2026-08-03 (final)
+- M4 DONE: `f8348e5` + test fixes `7b461d7`, verified EXIT=0, pushed. POC
+  M1–M4 complete across all three repos. Follow-ups landed on the branch:
+  completed-task tray exclusion (`ca5063e`), amethyst on the real desk +
+  arrange toggle + tray render cap (`b833c09`), stale-Task canvas-clobber
+  fix in toggleTaskCompletion (`2504e9a`).
+- REMAINING for POC sign-off: owner manual pass (desktop + Android, fresh
+  install AND v12-upgrade install) per §Verification — approved to proceed
+  with queued follow-ups while this is pending (owner, 2026-08-03).
