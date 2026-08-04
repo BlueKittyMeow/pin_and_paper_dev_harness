@@ -384,12 +384,24 @@ codex's shape only if M-D1 finds the mutable model fighting back; and
 codex recommends **starting with a single ink layer** for cards (folded
 into L3 as a data point).
 
-**Antigravity (agy):** review blocked — headless `agy -p` auto-denies its
-internal tool permissions, and the session's permission classifier blocks
-the `--dangerously-skip-permissions` workaround (the agy-shadow wrapper
-precedent was scoped to that one script). Re-run later via a
-Lara-sanctioned wrapper if her perspective is wanted; codex + the plan
-agent already agree on the fundamentals.
+**Antigravity (agy, ran 2026-08-03 late via the approved agy-claude-sp
+wrapper; full report in `CARD_DRAWINGS_AGY_REVIEW.md`)** — reviewed the
+AS-BUILT M-D1/M-D2 code and found pre-M-D5 hardening items ("M-D2.5"):
+1. `DrawingPreview` records/disposes its `ui.Picture` inside `build()` —
+   move to initState/didUpdateWidget (crash-risk class of bug; CONFIRM).
+2. `LayerStack.size` defaults to null but `toJson()` throws without it —
+   footgun for the editor; default it or require it at construction.
+3. `Stroke.fromJson` assumes 3-element point arrays — malformed data
+   RangeErrors instead of a domain error; guard it.
+4. Sub-pixel stroke widths at low desk zoom — consider a min-width floor.
+5. Claimed signed-radix bug in `colorToHex` — DUBIOUS (Dart ints aren't
+   Java ints; toARGB32() is non-negative), but the uint32 mask is free —
+   verify with a test, mask anyway.
+6. Cross-layer chronological undo + gesture-arena claiming — real, but
+   the modal-editor path defers the arena issue; undo is queued UX.
+Also endorses: NULL rows for empty drawings (adopt in M-D5), the
+decoupled `drawingOverlay` slot (matches plan §5), and the format v1
+payload design.
 
 ## Critical files for implementation
 - `pin_and_paper_sketchpad/lib/models/layer.dart` (+ `stroke.dart`) — serialization + fixes
