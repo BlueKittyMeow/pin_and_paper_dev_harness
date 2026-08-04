@@ -26,6 +26,20 @@
 - **KICKOFF (round 4):** owner approved starting the non-UX milestones —
   M-D1+M-D2 (sketchpad, one agent) and M-D4 (app DB v14, one agent)
   launched as background agents 2026-08-03. M-D3/M-D5 wait on L1–L4.
+- **M-D1 + M-D2 DONE** (sketchpad `1265115` + `0be2b12` on new branch
+  `claude/drag-drop-canvas-mvp-cu6uoy`, pushed): LayerStack any-layer-count
+  fix; pointer-ID tracking + stylus-cancels-touch palm rejection +
+  onPointerCancel + per-device pressure normalization; demo app →
+  `example/` (barrel exports library surface only, toolbar kept);
+  serialization v1 (`{"v":1,"size":[w,h],...}`, [x,y,p] 2-decimal
+  triples, enums by name, strict fromJson errors); `DrawingPreview`
+  (Picture-cached read-only renderer, scale-aware, RepaintBoundary) with
+  a shared `stroke_painter.dart` used by BOTH live canvas and preview
+  (kills the §7 replay-divergence risk); `LayerStack.revision` change
+  counter. 32 tests + analyze "No issues found", both exit 0. Accepted
+  deviations: toolbar deprecation cleanup (exit-0 discipline), optional
+  `activeLayer` JSON field, revision counter, example/ has no platform
+  folders (run `flutter create .` there for a device demo build).
 - **M-D4 DONE** (`a2b2511` on the pin-and-paper branch, pushed): DB v14
   `task_drawings` with `face` column + index, `_createDB`/helper parity;
   new `DrawingService` + `TaskDrawing` model (get/save-upsert/setVisible/
