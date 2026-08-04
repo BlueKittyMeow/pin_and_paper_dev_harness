@@ -26,6 +26,13 @@
 - **KICKOFF (round 4):** owner approved starting the non-UX milestones —
   M-D1+M-D2 (sketchpad, one agent) and M-D4 (app DB v14, one agent)
   launched as background agents 2026-08-03. M-D3/M-D5 wait on L1–L4.
+- **M-D4 DONE** (`a2b2511` on the pin-and-paper branch, pushed): DB v14
+  `task_drawings` with `face` column + index, `_createDB`/helper parity;
+  new `DrawingService` + `TaskDrawing` model (get/save-upsert/setVisible/
+  delete per (task_id, face)); no logChange, no tasks.updated_at bump
+  (commented in code). 62+171 tests exit 0; analyze matches untouched-
+  branch baseline. Judgment call accepted: typed `lib/models/
+  task_drawing.dart` added for M-D5 to consume.
 - **Back-fields (separate feature, decided):** global settings, notes
   becomes a back subfield with a PER-CARD show toggle (it's verbose).
   Maybe a mirrored "graphics settings" section; per-card exceptions for
