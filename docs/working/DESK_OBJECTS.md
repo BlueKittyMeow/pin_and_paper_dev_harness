@@ -118,6 +118,17 @@ Recommended path for the next 2-3 tchotchkes (pending owner read):
 
 ## Stretch goal: time-dynamic window light (owner vision, 2026-08-04)
 
+**Mood reference images (owner, 2026-08-04):**
+`reference/lighting_mood_a.png` + `lighting_mood_b.png` — golden-hour
+dappled leaf-light (fern gobo) across leather desk surfaces with aged
+paper cards. Owner's caveats: clutter level NOT canon, card styles NOT
+canon — these are for the LIGHT and the desk-top surface only. Use when
+building the gobo/time-of-day system and desk textures. NOTE: owner
+shared four mood images in chat; only two were saved to disk — ask her
+for the other two if these don't cover the range (one showed vintage
+stamps/pocketwatch styling, one a "curiosity is a form of care" brass
+plaque with specimen-card styling).
+
 The desk is lit by one conceptual **window, top-right** (consistent with
 the existing down-left shadow convention — light from top-right casts
 down-left). Owner's ideal:
