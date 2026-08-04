@@ -40,6 +40,15 @@
   deviations: toolbar deprecation cleanup (exit-0 discipline), optional
   `activeLayer` JSON field, revision counter, example/ has no platform
   folders (run `flutter create .` there for a device demo build).
+- **M-D1 + M-D2 DONE** (sketchpad branch created + pushed: `1265115`
+  hardening/serialization, `0be2b12` DrawingPreview; the agent died on a
+  Claude Code restart AFTER pushing, so its report was lost —
+  independently re-verified 2026-08-03: analyze exit 0, 32 tests exit 0,
+  local == origin, main.dart moved to example/, lib/ is models/widgets/
+  rendering + barrel). Format v1 as specced incl. unknown-version and
+  missing-size rejection; palm rejection + pointer-ID + onPointerCancel
+  tests present; DrawingPreview records the Picture once per content
+  change, honors visibility/opacity/eraser, scales capture→target.
 - **M-D4 DONE** (`a2b2511` on the pin-and-paper branch, pushed): DB v14
   `task_drawings` with `face` column + index, `_createDB`/helper parity;
   new `DrawingService` + `TaskDrawing` model (get/save-upsert/setVisible/
