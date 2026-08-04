@@ -1,6 +1,23 @@
 # Card Drawings — Sketchpad Integration Plan
 
-**Status: APPROVED — all owner questions answered 2026-08-03 (round 5).**
+**Status: COMPLETE 2026-08-04 — all milestones shipped and verified.**
+
+- **M-D5 DONE** (pin-and-paper `3efc024..a9d6b7b`, pushed; 305 tests
+  exit 0, analyze == baseline): sketchpad path dep; DeskColors theme
+  seed (accentGold/voidBackground/chipBackground/hiddenDrawingGlyph
+  grey); DrawingService.getAllDrawings() bulk read; data source
+  drawing state (drawingStackFor cached-parse API, toggle+persist,
+  refreshDrawingFor); DrawingEditorScreen (real-card-face backdrop,
+  880×560 capture, full toolbar w/ undo/redo, stylus+mouse default with
+  finger toggle via pointer-cancel interception, save-on-close with
+  empty-new-writes-nothing); pencil+eye chips on selected cards
+  (generalized _EntityChip); DrawingPreview overlays both faces; grey
+  hidden-ink glyph. Accepted deviations: editor-side input filtering
+  (module stays read-only), cached LayerStack instead of per-build
+  fromJson (protects the picture cache), blend toggles bump revision.
+- **OWNER DEVICE PASS QUEUE:** stylus pressure feel; chip ergonomics at
+  desk zoom; overlay crispness at 2×; is stylus-only default friction
+  on tablet (toggle in editor AppBar).
 
 **Owner answers L1–L10 (2026-08-03, verbatim decisions):**
 - **L1:** Chips on the selected card (pencil + eye). ✓
