@@ -30,12 +30,31 @@ Current state: desk is rendered flat/top-down-ish; the amethyst is a
 painted 2.5D illusion with its own baked perspective and a
 down-left-sun shadow convention (kDeskLightAzimuth).
 
-Codex research in flight → `DESK_OBJECTS_3D_RESEARCH.md`:
-prior art in virtual altar/desktop/journal apps; projection/physics
-coherence questions (feet-down-z vs tilt); Flutter 3D feasibility;
-asset pipeline options (incl. photo-derived); rotation UX.
-
-Decision deferred until research lands + owner reads it.
+Codex research LANDED → `DESK_OBJECTS_3D_RESEARCH.md` (2026-08-04).
+Recommended path for the next 2-3 tchotchkes (pending owner read):
+- **Keep the 3/4 cheat; do NOT tilt the desk.** Paper-first surface,
+  upright objects, shadows do the grounding — the established convention
+  (Stardew/JRPG lineage). True isometric would force foreshortened cards
+  and projective drag math for little gain.
+- **No live 3D yet.** flutter_scene is pre-1.0/master-only; flutter_gl
+  and three_dart are 3 years stale; engine embedding fights the widget
+  canvas. Revisit only if tchotchkes become a real system (many objects,
+  occlusion, animation, inspect mode).
+- **Rendering: prerendered sprite sets** — model/paint once, render
+  24-48 yaw frames + separate contact/cast shadow layers, ship as
+  ordinary widgets. Excellent mid-Android perf; drop-in with the canvas.
+- **Toad confirmed photogrammetry-hostile** (RealityScan: "glass may
+  fail entirely"; Polycam: matte-spray workaround). Photos as REFERENCE,
+  model by eye — which is exactly the Blender-agent pipeline below.
+- **Rotation: yaw-only turntable** for tchotchkes (matches amethyst),
+  authored snap poses (upright/on-side) only where meaningful; free 2D
+  in-plane rotation stays for cards. No free 3D rotation — "reads like
+  a 3D editor, not a desk."
+- **TODO before the next tchotchke: author a desk-object STYLE BIBLE**
+  (codex's added question, and the best catch in the report): one light
+  direction, one shadow recipe, one scale convention, one camera cheat,
+  one footprint/hitbox rule, one apparent-height range — so a painted
+  crystal, a modeled marble dog, and a glass toad read as one desk.
 
 ## Asset-creation option: agent-driven Blender (owner note 2026-08-04)
 
