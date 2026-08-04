@@ -1,6 +1,31 @@
 # Card Drawings — Sketchpad Integration Plan
 
-**Status: DRAFT — pending owner approval.** Drafted 2026-08-03 by a Fable 5
+**Status: DRAFT — pending owner approval.**
+
+**Owner answers received 2026-08-03 (round 3), folded in below:**
+- **L5 ANSWERED: backs DO get drawings.** Add a `face TEXT NOT NULL
+  DEFAULT 'front'` column to `task_drawings` in the v14 migration (one row
+  per face) — v1 UI may still ship front-first, but the schema is settled.
+- **Stretch-goal context (shapes the architecture, not v1 scope):** cards
+  should eventually OPEN into a "manila file folder" holding formatted
+  text, attached docs, images, drawings, more metadata. Treat
+  `task_drawings` as the first of the folder's attachment kinds; when the
+  folder lands, generalize toward `task_attachments` (kind = drawing /
+  doc / image / text) rather than inventing parallel one-off tables. The
+  drawing editor's entry point should expect to be absorbed into the
+  folder view later.
+- **Back-fields (separate feature, decided):** global settings, notes
+  becomes a back subfield with a PER-CARD show toggle (it's verbose).
+  Maybe a mirrored "graphics settings" section; per-card exceptions for
+  other fields still open.
+- **Relation strings (future feature, fold into one UI):** parent↔child
+  strings with user-stylable looks (color, bunting flags, dash, weight);
+  global show/hide + per-EDGE overrides (state lives on the edge, not the
+  cards, so reciprocity can't break); novel user-drawn strings between
+  arbitrary cards later, same edge model.
+- **Desk-objects drawer (queued feature):** a drawer/shelf UI listing all
+  knick-knacks — ghosted if already on the desk, full opacity if
+  available to add. Drafted 2026-08-03 by a Fable 5
 planning agent (code-verified against all four repos). Second opinions:
 `CARD_DRAWINGS_CODEX_REVIEW.md` (codex-cli 0.144.1, converges on all major
 calls — see "Second opinions" at the bottom); Antigravity (agy) review
@@ -78,6 +103,7 @@ chain, `_migrateToV13` at `1280-1291`):
 CREATE TABLE task_drawings (
   id TEXT PRIMARY KEY,
   task_id TEXT NOT NULL,
+  face TEXT NOT NULL DEFAULT 'front',   -- 'front' | 'back' (owner: backs get drawings too)
   drawing_json TEXT NOT NULL,     -- LayerStack.toJson() format v1 (fable-review §3)
   visible INTEGER NOT NULL DEFAULT 1,   -- per-card show/hide toggle (§4 below)
   position_x REAL NOT NULL DEFAULT 0,   -- future multi-drawing placement; 0,0 = fills card face
@@ -90,7 +116,9 @@ CREATE INDEX idx_task_drawings_task ON task_drawings(task_id);
 ```
 
 - Mirror into `_createDB` for fresh installs (parity rule stated at `database_service.dart:60-62`).
-- v1 behavior: at most one row per task (enforce in service, not schema — the schema is already multi-ready).
+- v1 behavior: at most one row per task per face (enforce in service, not
+  schema — the schema is already multi-ready). Uniqueness check keys on
+  `(task_id, face)`.
 
 ### SyncService implications — verified
 
