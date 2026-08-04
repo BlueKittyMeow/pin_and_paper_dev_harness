@@ -1,6 +1,31 @@
 # Card Drawings — Sketchpad Integration Plan
 
-**Status: DRAFT — pending owner approval.**
+**Status: APPROVED — all owner questions answered 2026-08-03 (round 5).**
+
+**Owner answers L1–L10 (2026-08-03, verbatim decisions):**
+- **L1:** Chips on the selected card (pencil + eye). ✓
+- **L2:** Editor backdrop = the REAL current card face.
+- **L3:** FULL three-layer toolbar (overrides codex's single-layer
+  suggestion). Consequence: cross-layer chronological undo (agy item)
+  graduates from queued-UX to REQUIRED for the editor milestone.
+- **L4:** Ink renders OVER card text; taps pass through.
+- **L5:** Backs get a drawing surface too → M-D3 threads an overlay slot
+  to BOTH faces (front + back), not front-only.
+- **L6:** Input policy toggle in the editor, DEFAULT STYLUS; revisit if
+  it's friction in real use.
+- **L7:** Drawings stay with their cards. FUTURE (bullet-journal era):
+  drawings as reusable "stamps" — a drawer showing recent/all drawings
+  with favoriting for reuse. Owner spitball, recorded not scoped.
+- **L8:** Drawing/visibility data should eventually SYNC — fold into the
+  Supabase milestone when the remote table ships (matches the plan's
+  no-logChange-until-then decision).
+- **L9:** Ink-on-workspace (desk doodles) is WANTED SOON. Related scope:
+  post-it notes as desk objects in the object drawer, and GROUPING of
+  sketches+objects. Treat as one upcoming project.
+- **L10:** Hidden-drawing tell = small grey pencil glyph. Owner directive:
+  define UI colors as named constants/variables (theme file) so the app
+  can be reskinned wholesale later — start with the new glyph + the
+  existing inline accent-gold literals in canvas_screen.dart.
 
 **Owner answers received 2026-08-03 (round 3), folded in below:**
 - **L5 ANSWERED: backs DO get drawings.** Add a `face TEXT NOT NULL
