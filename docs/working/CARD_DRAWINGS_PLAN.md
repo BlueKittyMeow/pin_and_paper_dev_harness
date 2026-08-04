@@ -6,14 +6,26 @@
 - **L5 ANSWERED: backs DO get drawings.** Add a `face TEXT NOT NULL
   DEFAULT 'front'` column to `task_drawings` in the v14 migration (one row
   per face) — v1 UI may still ship front-first, but the schema is settled.
-- **Stretch-goal context (shapes the architecture, not v1 scope):** cards
-  should eventually OPEN into a "manila file folder" holding formatted
-  text, attached docs, images, drawings, more metadata. Treat
-  `task_drawings` as the first of the folder's attachment kinds; when the
-  folder lands, generalize toward `task_attachments` (kind = drawing /
-  doc / image / text) rather than inventing parallel one-off tables. The
-  drawing editor's entry point should expect to be absorbed into the
-  folder view later.
+- **Stretch-goal context (shapes the architecture, not v1 scope), owner
+  clarified round 4:** the "manila folder" is NOT a card face — the card
+  OPENS to fill ~85% of the screen as a project workspace for larger task
+  planning: formatted text, attached docs, images, drawings, components,
+  more metadata. A whole surface, distinct from front/back faces (which
+  keep their own drawings via the `face` column). Treat `task_drawings`
+  as the first of the folder's attachment kinds; when the folder lands,
+  generalize toward `task_attachments` (kind = drawing / doc / image /
+  text) rather than inventing parallel one-off tables. The drawing
+  editor's entry point should expect to be absorbed into the folder
+  workspace later.
+- **Relation strings edge model: OWNER APPROVED (round 4).** Visibility +
+  style live on the edge (`task_edges` keyed from/to/type, tri-state
+  visibility inherit/show/hide, global toggle as default); card-level
+  toggles are bulk edge edits, reciprocity holds by construction;
+  parent↔child edges derive from parent_id; novel user strings are
+  `type: 'custom'` rows in the same table. Future feature, design locked.
+- **KICKOFF (round 4):** owner approved starting the non-UX milestones —
+  M-D1+M-D2 (sketchpad, one agent) and M-D4 (app DB v14, one agent)
+  launched as background agents 2026-08-03. M-D3/M-D5 wait on L1–L4.
 - **Back-fields (separate feature, decided):** global settings, notes
   becomes a back subfield with a PER-CARD show toggle (it's verbose).
   Maybe a mirrored "graphics settings" section; per-card exceptions for
