@@ -16,9 +16,32 @@ CARD_DRAWINGS_PLAN owner answers L7/L9).
 
 | Object | Notes |
 |---|---|
-| Marble scottie OR longhaired dachshund figurine | "slightly roughly cut" marble — carved-not-polished look |
-| Glass amber toad | Owner has the real one — she'll photograph it for reference (multiple angles useful if we try photo-derived modeling) |
+| Marble longhaired dachshund figurine (owner decided 2026-08-04; supersedes scottie option) | "slightly roughly cut" marble — carved-not-polished look. NOTE: the desk mockups + Blender brief use a scottie as the example — treat that as placeholder; the real asset is the dachshund. |
+| Glass amber toad/frog | Owner HAS reference images (2026-08-04) — to be filed in docs/working/reference/ when she shares them |
 | Post-it notes | Functional object (writeable?), also drawer item |
+
+## Reference mockups (owner-made, 2026-08-04, filed in reference/)
+
+`desk_mockup_cards_flat.png` + `desk_mockup_cards_skewed.png`: two
+degrees of card perspective on the same 3/4-cheat desk. Both prove the
+cheat — flat/near-flat cards + side-view objects + top-right light +
+cast shadows read as one desk. The dog rotation strip at the bottom of
+each is effectively the SPRITE-SET + CAMERA-RIG SPEC: preset stops at
+Top-Down 0°, Front 90°, 3/4 L/R ±45°, Front L/R ±60°, Back 180°.
+(Biplane/globe/succulent are mood, not roster.)
+
+**OPEN QUESTION (owner, discuss before deciding): card perspective.**
+Even the "flat" mockup carries subtle perspective skew, and the owner
+suspects some small degree of it may be wanted. Tension: the tech spec
+and research favor exact top-down rectangles (text readability, affine
+drag/hit math, plain widget rendering). Candidate middle paths, to
+prototype rather than argue: (a) truly flat cards, objects carry all
+depth; (b) a tiny FIXED global perspective term on the viewport
+transform (uniform for everything — Flutter Matrix4 supports it; hit
+testing inverts the matrix, needs verification); (c) cosmetic-only skew
+(shadows/edges suggest perspective, text stays screen-aligned). Plan: a
+cheap throwaway A/B on device once the drawing wave lands, owner picks
+by eye.
 
 ## Open design question: 2.5D vs 3D, and the desk's camera
 
@@ -56,7 +79,41 @@ Recommended path for the next 2-3 tchotchkes (pending owner read):
   one footprint/hitbox rule, one apparent-height range — so a painted
   crystal, a modeled marble dog, and a glass toad read as one desk.
 
-## Asset-creation option: agent-driven Blender (owner note 2026-08-04)
+## Stretch goal: time-dynamic window light (owner vision, 2026-08-04)
+
+The desk is lit by one conceptual **window, top-right** (consistent with
+the existing down-left shadow convention — light from top-right casts
+down-left). Owner's ideal:
+- **Early morning:** gentle light filtered through mottled tree leaves —
+  dappled but clear, mellow yellow.
+- **Evening:** more golden, more diffuse.
+- **Night:** cool moonlight.
+- **Stretch-stretch:** subtle MOVEMENT — the way leaves or a lace
+  curtain make sunlight dance rather than sit as a static beam.
+- **Configurable interrupt pattern** (the thing between window and desk):
+  potted monstera leaf vs gentle tree leaves vs winter stick trees.
+
+**Feasibility (Claude assessment): yes, genuinely plausible.** This is a
+"gobo"/"cookie" in stage-lighting terms — a patterned mask between light
+and surface. Flutter implementation: a fragment-shader or blended-image
+overlay layer above the desk background (below cards? above all with low
+opacity? — design call), tinted by a time-of-day color ramp, with the
+pattern texture slowly warped/translated by an animation for the dance.
+Fragment shaders are well-supported in Flutter (FragmentProgram);
+animated dappled light is cheap on GPU. Swappable gobo = swappable mask
+texture — the monstera/tree/winter-sticks configurability falls out for
+free. Battery: idle animation should pause when the app is backgrounded
+and possibly offer a reduce-motion setting (→ DEFAULTS_TO_REVISIT).
+
+**Style-bible implications (why this matters NOW, before modeling):**
+1. Object sprites must be lit NEUTRALLY and tinted globally at runtime —
+   baked-in warm/cool lighting would fight the time-of-day ramp.
+2. Shadow layers must be SEPARATE from object sprites (already the
+   3D-research recommendation) so shadow color/softness can follow the
+   time of day (hard-edged noon vs soft golden evening vs cool night).
+3. One light direction (top-right window) stays fixed across all times —
+   only color, softness, and the gobo pattern change. This keeps every
+   prerendered yaw frame valid all day.
 
 Blender MCP integrations exist for both Claude and codex; the owner has
 seen strong results from pure agent loops (model → screenshot → adjust),
