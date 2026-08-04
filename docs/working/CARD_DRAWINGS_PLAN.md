@@ -74,6 +74,16 @@
   missing-size rejection; palm rejection + pointer-ID + onPointerCancel
   tests present; DrawingPreview records the Picture once per content
   change, honors visibility/opacity/eraser, scales capture→target.
+- **M-D3 DONE** (card_renderer `68365ea` + `17e5ea9` + `6f0ddda`,
+  pushed): overlay slots on BOTH faces (`TaskCard.faceOverlay`,
+  `TaskCardBack.faceOverlay`, `FlippableTaskCard.frontOverlay/
+  backOverlay`) — Positioned.fill + IgnorePointer inside the ClipRRect,
+  over text per L4; unused sketchpad dep dropped. The killed agent's
+  resumed work was verified correct and kept whole. ALSO fixed the
+  owner's tag-clip bug: root cause was Flexible+Spacer splitting the
+  card's free space so the tag scrollview clipped row 2 even when it
+  fit; now Expanded claims all free space, due-date row stays pinned.
+  33 tests, analyze+test exit 0.
 - **M-D4 DONE** (`a2b2511` on the pin-and-paper branch, pushed): DB v14
   `task_drawings` with `face` column + index, `_createDB`/helper parity;
   new `DrawingService` + `TaskDrawing` model (get/save-upsert/setVisible/
