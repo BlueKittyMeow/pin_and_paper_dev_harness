@@ -48,6 +48,27 @@ anything sitting over the table) stays perfectly flat. World plane vs
 chrome plane, strictly separated. Codex research on how other apps
 handle this split → PERSPECTIVE_UI_RESEARCH.md when filed.
 
+## Phase 1 log (GO given 2026-08-04)
+
+- **Pre-flight done:** no prior Blender on MysteryOfGlass; Python 3.12
+  satisfies MCP's 3.11+; blender-ai-mcp cloned to
+  ~/Documents/Git/blender-ai-mcp (Apache-2.0; tested on Blender 5.0,
+  addon min 4.0; Blender 5.0.1 portable downloading to
+  ~/tools/blender-5.0.1-linux-x64/).
+- **Setup shape verified from its README:** Blender-side addon (build
+  zip via scripts/build_addon.py, enable → RPC server on :8765) + MCP
+  server process (Docker OR local Python env; NO docker on this box →
+  local env via uv; deps are heavy — sentence-transformers/torch/
+  lancedb, ~2GB venv; /home has 13G, acceptable). Server profile:
+  ROUTER_ENABLED=true, MCP_SURFACE_PROFILE=llm-guided, stdio transport
+  for Claude Code.
+- **Next:** build+install addon headless → uv env + server smoke test →
+  create agentic-blender-props workspace (trimmed §13 contract from
+  BLENDER_AGENTIC_MODELING_BRIEF.md) with .mcp.json → NOTE: new MCP
+  servers load at session start, so first real Blender driving happens
+  in a fresh session → pilot asset: notebook WITH ribbon bookmark;
+  camera rig = the mockups' 7 rotation stops.
+
 ## Blender pilot notes (owner round, 2026-08-04)
 - **License concern dissolved:** blend-ai's AGPL is irrelevant — it's a
   build-time asset tool, never part of the shipped app (owner call,
