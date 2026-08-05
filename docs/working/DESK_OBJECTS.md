@@ -11,6 +11,7 @@ CARD_DRAWINGS_PLAN owner answers L7/L9).
 | Object | Status | Notes |
 |---|---|---|
 | Amethyst chunk | SHIPPED (2026-08-03) | 2.5D painted CustomPainter, yaw rotation, grounding shadow ("shadow saga" — chimera of Gemini base + Claude contact line/caustics). Resize chips. zIndex 1<<20 paperweight. Now removable via the drawer (2026-08-04); legacy prefs position migrates to desk_objects on first write. |
+| Citrine / Rose Quartz / Fluorite chunks | SHIPPED (2026-08-04, drawer test roster) | Hue-rotated variants of the amethyst painter (`hueShift`: +134 golden, +68 pink, −130 green; shadows stay neutral). Same resize rules as the stone; unique zIndexes; start in the drawer. |
 | Marble longhaired dachshund | SHIPPED IN APP (2026-08-04) | `dachshund-v1-approved` sprite bundle as `DachshundFigurine` in the canvas module (768px color + 256px shadow layers ×7 stops, shadows composited at 40% per the rig). Double-tap cycles the 7 rotation stops. Default 128px = manifest true scale (`ppm_multiplier: 2`); resize chips clamp 64–384. zIndex amethyst+1. |
 
 ## Tab drawer (SHIPPED 2026-08-04)
