@@ -10,13 +10,30 @@ CARD_DRAWINGS_PLAN owner answers L7/L9).
 
 | Object | Status | Notes |
 |---|---|---|
-| Amethyst chunk | SHIPPED (2026-08-03) | 2.5D painted CustomPainter, yaw rotation, grounding shadow ("shadow saga" — chimera of Gemini base + Claude contact line/caustics). Resize chips. zIndex 1<<20 paperweight. |
+| Amethyst chunk | SHIPPED (2026-08-03) | 2.5D painted CustomPainter, yaw rotation, grounding shadow ("shadow saga" — chimera of Gemini base + Claude contact line/caustics). Resize chips. zIndex 1<<20 paperweight. Now removable via the drawer (2026-08-04); legacy prefs position migrates to desk_objects on first write. |
+| Marble longhaired dachshund | SHIPPED IN APP (2026-08-04) | `dachshund-v1-approved` sprite bundle as `DachshundFigurine` in the canvas module (768px color + 256px shadow layers ×7 stops, shadows composited at 40% per the rig). Double-tap cycles the 7 rotation stops. Default 128px = manifest true scale (`ppm_multiplier: 2`); resize chips clamp 64–384. zIndex amethyst+1. |
+
+## Tab drawer (SHIPPED 2026-08-04)
+
+Form chosen by owner 2026-08-04: **side tab panel, right edge** — slim
+gold-accented tab (chevron + drawer glyph), slides out a dark
+chip-styled panel. Screen-space chrome in a Stack OVER the canvas —
+satisfies the world-vs-chrome perspective constraint by construction.
+Behavior: tiles ghosted at 35% if placed / full opacity if available
+(owner spec); tap available → lands centered in the current view
+(clamped to canvas) + selected; tap ghosted → canvas pans to it
+(find-my-figurine); put-away lives on the selected object as a third
+chip under the resize pair. Persistence: DB v15 `desk_objects` table
+(id/placed/x/y/width/variant, sync-silent like task_drawings); variant
+holds the dachshund's rotation stop. Tap-to-place, not drag-out — the
+canvas's raw-Listener pointer tracking makes cross-boundary drags
+fragile; drag-out can layer on later if wanted.
 
 ## Wishlist (owner)
 
 | Object | Notes |
 |---|---|
-| Marble longhaired dachshund figurine (owner decided 2026-08-04; supersedes scottie option) | "slightly roughly cut" marble — carved-not-polished look. NOTE: the desk mockups + Blender brief use a scottie as the example — treat that as placeholder; the real asset is the dachshund. |
+| ~~Marble longhaired dachshund figurine~~ SHIPPED — see Modeled/shipped | v1 accepted + in app 2026-08-04. V2 realism branch still mid-flight in the workshop (bandsaw-driven). |
 | Glass amber toad/frog | Owner HAS reference images (2026-08-04) — to be filed in docs/working/reference/ when she shares them |
 | Post-it notes | Functional object (writeable?), also drawer item |
 
