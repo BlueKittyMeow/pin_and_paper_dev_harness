@@ -2,6 +2,56 @@
 
 Research date: 2026-08-04
 
+## Owner direction after first read (2026-08-05, capture-not-decision)
+
+- App launches into LIST view at whatever window size; the window must
+  stay freely resizable (a locked-aspect desktop app is a pain). The
+  awkwardness appears on switching to Spatial View: arbitrary window
+  size vs the fixed desk, with the black void bounding the desk reading
+  as dead space. "We may want to lock SOMETHING somewhere" — open which
+  thing (entry zoom? framing? void treatment?) gets locked.
+- Vertical mobile idea: instead of the NEW tray + done pile living on
+  the desk, a BOTTOM TRAY that rises up (like the tchotchke drawer tab
+  pattern), scrolls horizontally, and toggles between new / recently
+  completed. Form-factor-specific furniture, not a smaller desk.
+- On the report's minimap suggestion: prefers (instead) a simple
+  "full desk" toggle that pulls the camera to the furthest zoom-out —
+  i.e. the report's overview-floor + fit action, without a minimap.
+- Void treatment: a gentle OUT-OF-FOCUS background image beyond the
+  desk instead of flat black. Owner will source images (open-source
+  commercial-reuse or generated) — specs given below.
+- Possibly a real wood DESK surface texture too (she has had a devil
+  of a time finding a good tiling wood texture; see spec below for the
+  no-tiling-needed alternative).
+
+### Asset specs for owner sourcing
+
+**Beyond-desk background (the "void" backdrop):**
+- Treated as screen-space backdrop (doesn't pan with the desk), so it
+  crops to any window aspect: keep the composition CENTER-WEIGHTED and
+  croppable on all sides.
+- Master: 3840×2160 (16:9), JPEG quality ~80 (target ≤ ~1.5 MB).
+  Because it ships out-of-focus, upscaling is forgiving — genuinely
+  blurred content survives display scaling that sharp content wouldn't.
+- Look: soft-focus / shallow depth-of-field, DARKER than the desk
+  surface (the desk must read as the lit object), low contrast, no
+  small sharp detail. Warm-dark tones that harmonize with kraft paper +
+  accent gold. Think: blurred study/room beyond the desk edge, bokeh
+  lamplight, dark wood shelves. Avoid baked directional light beams —
+  the gobo/time-of-day system will own lighting mood later.
+
+**Desk surface (real wood option):**
+- RECOMMENDED: one single NON-TILING image at exactly 4:3 — 4000×3000
+  px minimum (5120×3840 welcome if the file stays reasonable; JPEG
+  ~80). It maps 1:1 onto the 2000×1500 desk, so no seam-hunting at
+  all — this sidesteps the tiling problem entirely and allows natural
+  large-scale grain/character (knots, wear) that tiles can't have.
+- Top-down, EVENLY lit (no baked shadows/highlights — same gobo
+  reason), subtle grain, low-mid contrast so cards and ink stay
+  readable on top.
+- If a genuinely seamless tile turns up anyway: 1024 or 2048 square,
+  grain running along one axis consistently.
+
 ## Decision summary
 
 Keep one canonical **2000 × 1500 (4:3) desk** and adapt the camera, not the
