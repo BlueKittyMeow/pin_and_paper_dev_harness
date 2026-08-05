@@ -37,6 +37,20 @@ fragile; drag-out can layer on later if wanted.
 | ~~Marble longhaired dachshund figurine~~ SHIPPED — see Modeled/shipped | v1 accepted + in app 2026-08-04. V2 realism branch still mid-flight in the workshop (bandsaw-driven). |
 | Glass amber toad/frog | Owner HAS reference images (2026-08-04) — to be filed in docs/working/reference/ when she shares them |
 | Post-it notes | Functional object (writeable?), also drawer item |
+| Snowflake obsidian hunk | Owner request 2026-08-05 — black conchoidal glass, grey cristobalite "snowflake" rosettes. In the gem-habits workshop round. |
+
+## Gem habit round (owner direction 2026-08-05, in flight)
+
+Modeled gemchunk v1 (one cluster mesh, 4 material variants) is
+approved-but-superseded as a direction: owner wants **each mineral to
+grow like its real self** — amethyst + citrine as DIFFERENTLY-arranged
+prismatic clusters, rose quartz as a massive/anhedral rounded chunk
+(keeping the approved milky/waxy material), fluorite as interpenetrating
+CUBES, plus the new snowflake obsidian. Also: internal seams / cloudy
+occlusions inside translucent crystals + per-face color variation
+(her rose-quartz note). Workshop agent iterates to a 5-mineral review
+strip (`assets/gemchunk/renders/habit_strip_v1.png`) — owner approves
+looks BEFORE full bundles render.
 
 ## Reference mockups (owner-made, 2026-08-04, filed in reference/)
 
